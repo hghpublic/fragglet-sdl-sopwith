@@ -23,3 +23,9 @@ stamp-h1
 tags
 TAGS
 emscripten_cache
+
+#macos
+.DS_Store
+
+# cmake
+build/
