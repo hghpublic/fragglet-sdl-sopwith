@@ -1,0 +1,25 @@
+= SDL Sopwith
+:toc:
+:sectnums:
+ifndef::env-github[:icons: font]
+:note-caption: :paperclip:
+:important-caption: :exclamation:
+:warning-caption: :warning:
+
+== SDL Sopwith
+
+
+https://fragglet.github.io/sdl-sopwith/
+
+https://github.com/fragglet/sdl-sopwith
+
+https://github.com/hghpublic/fragglet-sdl-sopwith
+
+== build instructions
+
+
+----
+❯ ./autogen.sh > dev/logs/autogen.sh.log 2>&1
+❯ make > dev/logs/make.log 2>&1
+❯ ./src/sopwith
+----
