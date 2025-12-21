@@ -282,6 +282,11 @@ static void InitializeTinnyFilter(unsigned int sample_rate)
 	FreeFilter(&hp_filter);
 }
 
+static void FreeTinnyFilter(void)
+{
+    FreeFilter(&tinny_filter);
+}
+
 static void InitializeNullFilter(void)
 {
 	static float null_kernel, one_sample;
@@ -327,6 +332,7 @@ void Speaker_Init(void)
 	sound_initted = true;
 	if (snd_tinnyfilter) {
 		InitializeTinnyFilter(audiospec.freq);
+        atexit(FreeTinnyFilter);
 	} else {
 		InitializeNullFilter();
 	}
