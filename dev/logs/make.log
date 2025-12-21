@@ -1,0 +1,68 @@
+(CDPATH="${ZSH_VERSION+.}:" && cd . && /bin/bash '/workspaces/fragglet-sdl-sopwith/autotools/missing' autoheader)
+rm -f stamp-h1
+touch config.hin
+cd . && /bin/bash ./config.status config.h
+config.status: creating config.h
+config.status: config.h is unchanged
+make  all-recursive
+make[1]: Entering directory '/workspaces/fragglet-sdl-sopwith'
+Making all in src
+make[2]: Entering directory '/workspaces/fragglet-sdl-sopwith/src'
+Making all in sdl
+make[3]: Entering directory '/workspaces/fragglet-sdl-sopwith/src/sdl'
+  CC       video.o
+  CC       pcsound.o
+  CC       timer.o
+  CC       controller.o
+  AR       libsdlsopwith.a
+ar: `u' modifier ignored since `D' is the default (see `U')
+  CC       main.o
+  AR       libsdlsopmain.a
+ar: `u' modifier ignored since `D' is the default (see `U')
+make[3]: Leaving directory '/workspaces/fragglet-sdl-sopwith/src/sdl'
+make[3]: Entering directory '/workspaces/fragglet-sdl-sopwith/src'
+  CC       swasynio.o
+  CC       swauto.o
+  CC       swcollsn.o
+  CC       swconf.o
+swconf.c: In function ‘swloadconf’:
+swconf.c:213:17: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  213 |                 fgets(inbuf, sizeof(inbuf), fs);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC       swend.o
+  CC       swgames.o
+  CC       swgrpha.o
+  CC       swinit.o
+  CC       swmain.o
+  CC       swmenu.o
+  CC       swmove.o
+  CC       swobject.o
+  CC       swsound.o
+  CC       swsplat.o
+  CC       swstbar.o
+  CC       swsymbol.o
+  CC       swtext.o
+  CC       swtitle.o
+  CC       hiscore.o
+hiscore.c: In function ‘ReadLine’:
+hiscore.c:78:25: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   78 |                         fgets(tmpbuf, sizeof(tmpbuf), fs);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC       tcpcomm.o
+  CC       touch_area.o
+  CC       video.o
+  CC       yocton.o
+  CCLD     sopwith
+make[3]: Leaving directory '/workspaces/fragglet-sdl-sopwith/src'
+make[2]: Leaving directory '/workspaces/fragglet-sdl-sopwith/src'
+Making all in doc
+make[2]: Entering directory '/workspaces/fragglet-sdl-sopwith/doc'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/workspaces/fragglet-sdl-sopwith/doc'
+Making all in pkg
+make[2]: Entering directory '/workspaces/fragglet-sdl-sopwith/pkg'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/workspaces/fragglet-sdl-sopwith/pkg'
+make[2]: Entering directory '/workspaces/fragglet-sdl-sopwith'
+make[2]: Leaving directory '/workspaces/fragglet-sdl-sopwith'
+make[1]: Leaving directory '/workspaces/fragglet-sdl-sopwith'
