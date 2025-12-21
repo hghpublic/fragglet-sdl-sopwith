@@ -153,9 +153,15 @@ static bool SaveHighScores(const char *filename)
 	return true;
 }
 
+static char *hiscore_file = NULL;
+void FreeHighScoreFilePath(void)
+{
+    free(hiscore_file);
+    hiscore_file = NULL;
+}
+
 static const char *HighScoreFilePath(void)
 {
-	static char *hiscore_file = NULL;
 	size_t len;
 	char *pref_path;
 
@@ -163,6 +169,8 @@ static const char *HighScoreFilePath(void)
 		return hiscore_file;
 	}
 
+    atexit(FreeHighScoreFilePath);
+    
 	// If there is a global high scores file on the system, we will
 	// use that instead of the home directory one.
 	if (strlen(HISCORES_PATH) > 0) {
