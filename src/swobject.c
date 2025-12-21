@@ -13,6 +13,7 @@
 //
 
 #include <assert.h>
+#include <stdlib.h>
 
 #include "sw.h"
 #include "swmain.h"
@@ -112,6 +113,38 @@ void copyobj(OBJECTS *to, OBJECTS *from)
 	to->ob_next = NULL;
 }
 
+void freeallobj(void)
+{
+	OBJECTS *ob, *next;
+
+	// Free all objects in the active list
+	ob = objtop;
+	while (ob != NULL) {
+		next = ob->ob_next;
+		free(ob);
+		ob = next;
+	}
+
+	// Free all objects in the free list
+	ob = objfree;
+	while (ob != NULL) {
+		next = ob->ob_next;
+		free(ob);
+		ob = next;
+	}
+
+	// Free all objects in the delete list
+	ob = deltop;
+	while (ob != NULL) {
+		next = ob->ob_next;
+		free(ob);
+		ob = next;
+	}
+
+	// Reset all pointers to NULL
+	objtop = objbot = objfree = deltop = delbot = NULL;
+}
+
 OBJECTS *allocobj(void)
 {
 	OBJECTS *ob;
@@ -138,6 +171,13 @@ OBJECTS *allocobj(void)
 	ob->ob_onmap = false;
 
 	objbot = ob;
+
+	// Register cleanup function on first allocation
+	static bool cleanup_registered = false;
+	if (!cleanup_registered) {
+		atexit(freeallobj);
+		cleanup_registered = true;
+	}
 
 	return ob;
 }

@@ -20,6 +20,7 @@ extern void updateobjpos(OBJECTS *ob);
 extern void copyobj(OBJECTS *to, OBJECTS *from);
 extern OBJECTS *allocobj(void);
 extern void deallobj(OBJECTS *obp);
+extern void freeallobj(void);
 extern void movexy(OBJECTS *ob, int *x, int *y);
 extern void setdxdy(OBJECTS *obj, int dx, int dy);
 
