@@ -56,6 +56,7 @@ static const char *GetConfigFilename(void)
 	}
 
 	snprintf(result, buflen, "%s%s", pref_path, CONFIG_FILE_NAME);
+    Vid_FreePrefPath(pref_path);
 	return result;
 }
 

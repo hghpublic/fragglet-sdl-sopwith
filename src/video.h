@@ -116,6 +116,7 @@ extern int Vid_FuselageColor(faction_t f);
 void Vid_ClearBuf(void);
 
 char *Vid_GetPrefPath(void);
+void Vid_FreePrefPath(char *path);
 
 void ErrorExit(char *s, ...);
 

@@ -950,6 +950,11 @@ char *Vid_GetPrefPath(void)
 	return result;
 }
 
+void Vid_FreePrefPath(char *path)
+{
+    SDL_free(path);
+}
+
 #ifdef HAVE_ISATTY
 #include <unistd.h>
 #else

@@ -194,6 +194,7 @@ static const char *HighScoreFilePath(void)
 	hiscore_file = calloc(1, len);
 	assert(hiscore_file != NULL);
 	snprintf(hiscore_file, len, "%s%s", pref_path, HISCORE_FILENAME);
+    Vid_FreePrefPath(pref_path);
 	return hiscore_file;
 }
 
