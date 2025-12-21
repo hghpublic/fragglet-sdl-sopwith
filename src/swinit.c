@@ -84,13 +84,22 @@ static void initobjs(void)
 	objfree = NULL;
 }
 
+void freegrnd(void)
+{
+    free(ground);
+    ground = NULL;
+}
+
 void initgrnd(void)
 {
-	free(ground);
+	freegrnd();
 	ground = calloc(currgame->gm_max_x, sizeof(GRNDTYPE));
 	memcpy(ground, currgame->gm_ground,
 	       sizeof(GRNDTYPE) * currgame->gm_max_x);
+    
+    atexit(freegrnd);
 }
+
 
 static void initseed(void)
 {
