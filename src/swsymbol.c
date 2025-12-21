@@ -1222,6 +1222,37 @@ sopsym_t symbol_pixel = {
 	1
 };
 
+// clean generated array of symset_t structs:
+#define FREE_SOPSYM_DATA(out)                           \
+        { int _i; int _r;                               \
+          for (_i = 0; _i < arrlen(out); ++_i) {        \
+            for (_r = 0; _r < 8; _r++) {                \
+                free((out)[_i].sym[_r].data);           \
+            }                                           \
+          }                                             \
+        }
+
+void CleanGeneratedSymbols(void)
+{
+    FREE_SOPSYM_DATA(symbol_bomb);
+	FREE_SOPSYM_DATA(symbol_targets);
+	FREE_SOPSYM_DATA(symbol_debris);
+	FREE_SOPSYM_DATA(symbol_flock);
+	FREE_SOPSYM_DATA(symbol_bird);
+	FREE_SOPSYM_DATA(symbol_ox);
+	FREE_SOPSYM_DATA(symbol_missile);
+	FREE_SOPSYM_DATA(symbol_burst);
+	FREE_SOPSYM_DATA(symbol_plane);
+	FREE_SOPSYM_DATA(symbol_plane_hit);
+	FREE_SOPSYM_DATA(symbol_plane_win);
+	FREE_SOPSYM_DATA(symbol_medal);
+	FREE_SOPSYM_DATA(symbol_ribbon);
+	FREE_SOPSYM_DATA(symbol_target_hit);
+	FREE_SOPSYM_DATA(symbol_shotwin);
+	FREE_SOPSYM_DATA(symbol_birdsplat);
+	FREE_SOPSYM_DATA(symbol_balloon);
+}
+
 // generate array of symset_t structs from array of strings:
 #define SYMSETS_FROM_TEXT(text, out)                    \
         { int _i;                                       \
@@ -1250,6 +1281,8 @@ void GenerateSymbols(void)
 	SYMSETS_FROM_TEXT(swshtsym, symbol_shotwin);
 	SYMSETS_FROM_TEXT(swsplsym, symbol_birdsplat);
 	SYMSETS_FROM_TEXT(swballoonsym, symbol_balloon);
+
+    atexit(CleanGeneratedSymbols);
 }
 
 //
