@@ -1020,7 +1020,7 @@ OBJECTS *PlaneForFaction(faction_t f)
 
 	for (i = 0; i < num_planes; i++) {
 		if (planes[i]->ob_faction == f) {
-			return planes[i];;
+			return planes[i];
 		}
 	}
 
