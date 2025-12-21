@@ -34,15 +34,24 @@
 
 #define CONFIG_FILE_NAME "sopwith.cfg"
 
+static char *result = NULL;
+
+static void FreeConfigFilename()
+{
+    free(result);
+    result = NULL;
+}
+
 static const char *GetConfigFilename(void)
 {
-	static char *result = NULL;
 	char *pref_path;
 	size_t buflen;
 
 	if (result != NULL) {
 		return result;
 	}
+
+    atexit(FreeConfigFilename);
 
 	pref_path = Vid_GetPrefPath();
 	if (pref_path == NULL) {
